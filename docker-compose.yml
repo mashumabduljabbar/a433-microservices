@@ -1,0 +1,14 @@
+version: '2'
+services:
+  item-app:
+    image: mashumjabbar/item-app:v1
+    ports:
+      - "80:8080"
+    depends_on:
+      - item-app
+  item-db:
+    image: mongo:3
+    volumes:
+      - app-db:/data/db
+volumes:
+  app-db:
