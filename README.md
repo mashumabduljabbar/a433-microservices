@@ -216,3 +216,11 @@ Untuk memberhentikan dapat menggunakan script berikut :
 ``` bash
 docker-compose down -d
 ```
+
+
+# LOG
+Untuk menampilkan log dari Docker Compose, gunakan perinta berikut :
+
+``` bash
+docker-compose logs -f > log.txt
+```
