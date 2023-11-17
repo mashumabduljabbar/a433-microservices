@@ -1,0 +1,5 @@
+Link GitHub repository pribadi hasil forking : https://github.com/mashumabduljabbar/a433-microservices/
+
+Link Docker Hub : https://hub.docker.com/r/mashumjabbar/item-app
+
+Link Penjelasan Script : https://github.com/mashumabduljabbar/a433-microservices/tree/proyek-pertama#penjelasan-script
