@@ -244,4 +244,6 @@ sudo usermod -aG docker $USER
 
 docker --version
 
+apt  install docker-compose -y
+
 ```
