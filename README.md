@@ -1,5 +1,13 @@
 # PENJELASAN SCRIPT
 
+## CLONE
+
+Clone repo aplikasi terlebih dahulu 
+
+``` bash
+git clone -b proyek-pertama https://github.com/mashumabduljabbar/a433-microservices.git
+```
+
 ## DOCKERFILE
 File ini digunakan untuk membangun image Docker. Berikut adalah command sekaligus penjelasan dari command yang dibuat.
 
@@ -50,16 +58,16 @@ docker images
 # Command ini digunakan untuk menampilkan daftar image Docker yang ada di sistem.
 
 
-docker tag item-app:v1 mashumjabbar/item-app:v1
-# Command ini memberikan tag tambahan untuk image yang telah dibuat. Dalam hal ini, image item-app:v1 diberi tag baru sebagai mashumjabbar/item-app:v1. Tagging diperlukan jika kita ingin mengunggah image ke registry Docker yang berbeda.
+docker tag item-app:v1 ghcr.io/mashumabduljabbar/item-app:v1
+# Command ini memberikan tag tambahan untuk image yang telah dibuat. Dalam hal ini, image item-app:v1 diberi tag baru sebagai mashumabduljabbar/item-app:v1. Tagging diperlukan jika kita ingin mengunggah image ke registry Docker yang berbeda.
 
 
-echo $PASSWORD_DOCKER_HUB | docker login -u mashumjabbar --password-stdin
-# Login to Docker Hub with provided password ini merupakan command untuk melakukan login ke Docker Hub menggunakan perintah docker login. Kata sandi untuk login diambil dari variabel lingkungan $PASSWORD_DOCKER_HUB. Ini adalah cara yang umum digunakan untuk melakukan login secara otomatis dalam skrip tanpa mengekspos kata sandi secara terang-terangan dalam skrip. Pastikan sudah melakukan pembuatan variabel tersebut dengan cara : export PASSWORD_DOCKER_HUB=your_password_here
+echo $PAT | docker login ghcr.io -u mashumabduljabbar --password-stdin
+# Login to Docker Hub with provided password ini merupakan command untuk melakukan login ke Docker Hub menggunakan perintah docker login. Kata sandi untuk login diambil dari variabel lingkungan $PASSWORD_DOCKER_HUB. Ini adalah cara yang umum digunakan untuk melakukan login secara otomatis dalam skrip tanpa mengekspos kata sandi secara terang-terangan dalam skrip. Pastikan sudah melakukan pembuatan variabel tersebut dengan cara : export PAT=token_gitub_package
 
 
-docker push mashumjabbar/item-app:v1
-# Ini merupakan command untuk mengunggah image Docker yang telah dibuat ke Docker Hub menggunakan perintah docker push. Image dengan tag mashumjabbar/item-app:v1 akan diunggah ke registry Docker Hub.
+docker push ghcr.io/mashumabduljabbar/item-app:v1
+# Ini merupakan command untuk mengunggah image Docker yang telah dibuat ke Docker Hub menggunakan perintah docker push. Image dengan tag mashumabduljabbar/item-app:v1 akan diunggah ke Github Package.
 ```
 
 
@@ -71,7 +79,7 @@ version: '2'
 
 services:
   item-app:
-    image: mashumjabbar/item-app:v1 
+    image: ghcr.io/mashumabduljabbar/item-app:v1 
     ports:
       - "80:8080"
     depends_on:
@@ -84,7 +92,7 @@ services:
 
 # Pada skrip Services di atas digunakan untuk memmulai definisi layanan. Dalam hal ini, ada dua layanan yang didefinisikan (item-app dan item-db). 
 
-# item-app adalah layanan yang menggunakan image Docker mashumjabbar/item-app:v1. 
+# item-app adalah layanan yang menggunakan image Docker ghcr.io/mashumabduljabbar/item-app:v1. 
 # ports mengatur penerbitan port untuk item-app, sehingga port 80 pada host akan diteruskan ke port 8080 pada kontainer. 
 # depends_on menunjukkan bahwa layanan item-db harus berjalan sebelum item-app dimulai.
 
