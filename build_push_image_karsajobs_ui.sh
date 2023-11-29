@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set username Docker Hub & Login
+# Set username Github Package & Login
 export USERNAME="mashumabduljabbar"
 echo $PAT | docker login -u $USERNAME --password-stdin
 
