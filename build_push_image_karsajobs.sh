@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Set username Docker Hub & Login
-export USERNAME_DOCKER="mashumjabbar"
-echo $PASSWORD_DOCKER_HUB | docker login -u $USERNAME_DOCKER --password-stdin
+# Set username Github Package & Login
+export USERNAME="mashumabduljabbar"
+echo $PAT | docker login ghcr.io -u  $USERNAME --password-stdin
 
 # Set Image Name
 export IMAGE_BACKEND="karsajobs:latest"
 
 # Nama repo untuk backend
-export REPO_BACKEND="$USERNAME_DOCKER/$IMAGE_BACKEND"
+export REPO_BACKEND="ghcr.io/$USERNAME/$IMAGE_BACKEND"
 
 # Build Docker image untuk backend
 docker build -t $IMAGE_BACKEND -f Dockerfile .
